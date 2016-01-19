@@ -8,6 +8,8 @@ public class MemberLogin {
 	
 	private String imei;
 
+	private String age;
+
 	public String getTelphone() {
 		return telphone;
 	}
