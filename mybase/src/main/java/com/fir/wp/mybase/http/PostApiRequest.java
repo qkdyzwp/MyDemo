@@ -1,4 +1,5 @@
 package com.fir.wp.mybase.http;
+import com.fir.wp.mybase.BaseConfig;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.MediaType;
@@ -53,7 +54,7 @@ public class PostApiRequest extends HttpRequest{
                 String key = entry.getKey();
                 String value = entry.getValue();
                 builder.addPart(Headers.of(DEFAULT_CONTENT, getParamValue(key)),
-                        RequestBody.create(MediaType.parse(chars.name()), value));
+                        RequestBody.create(MediaType.parse(BaseConfig.getCharset().name()), value));
             }
         }
         //一个是文件

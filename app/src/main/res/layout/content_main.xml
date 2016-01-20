@@ -22,4 +22,17 @@
         android:layout_below="@+id/postGetMessage"
         android:text="下载"
         android:id="@+id/downLoad"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/downLoad"
+        android:layout_height="wrap_content"
+        xmlns:fresco="http://schemas.android.com/apk/res-auto"
+        >
+        <com.fir.wp.mybase.load.LoadImg
+            android:id="@+id/image_view"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            fresco:placeholderImage="@mipmap/ic_launcher"
+            />
+    </LinearLayout>
 </RelativeLayout>

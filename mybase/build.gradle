@@ -26,4 +26,5 @@ dependencies {
     compile 'com.squareup.okio:okio:1.5.0'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'cn.edu.zafu:coreprogress:0.0.3'//okHttp下载监听https://github.com/lizhangqu/CoreProgress
+    compile 'com.facebook.fresco:fresco:0.8.1'
 }

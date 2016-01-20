@@ -2,7 +2,6 @@ package com.fir.wp.mybase.http;
 
 import com.squareup.okhttp.OkHttpClient;
 
-import java.nio.charset.Charset;
 import java.util.concurrent.TimeUnit;
 
 import cn.edu.zafu.coreprogress.listener.impl.UIProgressListener;
@@ -12,7 +11,7 @@ import cn.edu.zafu.coreprogress.listener.impl.UIProgressListener;
  * about
  */
 public abstract class HttpRequest {
-    public static final Charset chars= Charset.forName("UTF-8");
+//    public static final Charset chars= Charset.forName("UTF-8");
     private  static  OkHttpClient mOkHttpClient;
     private static final int OUTTIME=30;
     private Params params;

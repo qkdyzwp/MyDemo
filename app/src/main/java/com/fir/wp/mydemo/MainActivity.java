@@ -1,6 +1,7 @@
 package com.fir.wp.mydemo;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.fir.wp.mybase.http.DownCallBack;
 import com.fir.wp.mybase.http.HttpGetMessage;
 import com.fir.wp.mybase.http.Params;
@@ -22,6 +24,7 @@ import com.google.gson.Gson;
 public class MainActivity extends AppCompatActivity {
     private Button postGetMessage;
     private Button downLoad;
+    private SimpleDraweeView img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         postGetMessage = (Button) findViewById(R.id.postGetMessage);
         downLoad = (Button) findViewById(R.id.downLoad);
+        img= (SimpleDraweeView) findViewById(R.id.image_view);
+        Uri uri = Uri.parse("http://img4.duitang.com/uploads/item/201510/07/20151007124603_4Tj2K.jpeg");
+        img.setImageURI(uri);
         postGetMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
