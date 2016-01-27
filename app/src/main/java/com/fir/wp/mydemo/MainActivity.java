@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 String aesMsg = null;
                 try {
                     aesMsg = AES.Encrypt(message, "weibao201410wlwp");
+                    Log.e("aseMsg",aesMsg);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
