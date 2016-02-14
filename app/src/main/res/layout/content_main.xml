@@ -11,20 +11,50 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.fir.wp.mydemo.MainActivity"
     tools:showIn="@layout/activity_main">
-<Button
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Post异步请求"
-    android:id="@+id/postGetMessage"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/postGetMessage"
-        android:text="下载"
-        android:id="@+id/downLoad"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_below="@+id/downLoad"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/allBtn">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Post异步请求"
+            android:id="@+id/postGetMessage"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="下载"
+            android:id="@+id/downLoad"/>
+        <Button
+            android:onClick="showPromptDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prompt Dialog"/>
+
+        <Button
+            android:onClick="showPicDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pic"/>
+
+        <Button
+            android:onClick="showTextDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text"/>
+
+        <Button
+            android:onClick="showAllModeDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text And Pic"
+            android:id="@+id/lastBtn"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/allBtn"
         android:layout_height="wrap_content"
         xmlns:fresco="http://schemas.android.com/apk/res-auto"
         >
