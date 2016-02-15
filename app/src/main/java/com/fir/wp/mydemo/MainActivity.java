@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onComplete(String request) {
+                        public void onComplete(String request) {
                         Log.e("wp", "网络请求完成" + request);
                     }
 
@@ -77,30 +77,37 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("wp", "网络请求失败" + error);
                     }
                 });
+                }
             }
-        });
-        downLoad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
+            );
+            downLoad.setOnClickListener(new View.OnClickListener()
+
+            {
+                @Override
+                public void onClick (View v){
                 HttpGetMessage httpGetMessage = new HttpGetMessage();
-                httpGetMessage.downFile("http://www.weibaobeijing.com/Accounting/downloadApk2.jspx", null, new DownCallBack( Environment.getExternalStorageDirectory().getPath(),"abc.apk") {
+                httpGetMessage.downFile("http://www.weibaobeijing.com/Accounting/downloadApk2.jspx", null, new DownCallBack(Environment.getExternalStorageDirectory().getPath(), "abc.apk") {
                     @Override
                     public void onStart(String url, Params params) {
                         Log.e("wp", "网络请求开始");
                     }
+
                     @Override
                     public void onComplete(String request) {
                         Log.e("wp", "网络请求完成" + request);
                     }
+
                     @Override
                     public void onFailed(String request) {
 
                     }
+
                     @Override
                     public void onProgress(long currentBytes, long contentLength, boolean done) {
                         Log.e("wp111111", "currentBytes=" + currentBytes);
-                        Log.e("wp11111","contentLength="+contentLength);//包长
-                        Log.e("wp11111","done="+done);
+                        Log.e("wp11111", "contentLength=" + contentLength);//包长
+                        Log.e("wp11111", "done=" + done);
                     }
                 });
             }
@@ -170,12 +177,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, dialog.getPositiveText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
-        dialog .setNegativeListener(getString(R.string.cancel), new ColorDialog.OnNegativeListener() {
-                    @Override
-                    public void onClick(ColorDialog dialog) {
-                        Toast.makeText(MainActivity.this, dialog.getNegativeText().toString(), Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
-                    }
+        dialog.setNegativeListener(getString(R.string.cancel), new ColorDialog.OnNegativeListener() {
+            @Override
+            public void onClick(ColorDialog dialog) {
+                Toast.makeText(MainActivity.this, dialog.getNegativeText().toString(), Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
                 });
         dialog.show();
     }
