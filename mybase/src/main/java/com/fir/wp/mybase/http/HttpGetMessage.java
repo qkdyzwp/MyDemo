@@ -14,8 +14,6 @@ public class HttpGetMessage {
     };
 
     public void downFile(String url,Params params,BaseCallBack callBack){
-//        private  String fileSavePath;
-//        private  String fileSaveName;
         HttpRequest request=new DownApiRequest();
         request.setUrl(url);
         request.setParams(params);

@@ -23,8 +23,6 @@ public class DownApiRequest extends HttpRequest{
                     .url(url)
                     .build();
             ProgressHelper.addProgressResponseListener(mOkhttpClient, callBack.listener).newCall(request).enqueue(callBack);
-//            Call call = mOkhttpClient.newCall(request);
-//            call.enqueue(callBack);
         }catch(IllegalArgumentException ex){
             callBack.onFailed("Url路径不合法");
         }catch(Exception ex){

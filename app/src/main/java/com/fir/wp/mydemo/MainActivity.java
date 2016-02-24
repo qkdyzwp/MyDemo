@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private Button postGetMessage;
     private Button downLoad;
     private SimpleDraweeView img;
-
     private Button textDiaolog;
 
     @Override
@@ -39,53 +38,54 @@ public class MainActivity extends AppCompatActivity {
         Fresco.initialize(MainActivity.this);
         postGetMessage = (Button) findViewById(R.id.postGetMessage);
         downLoad = (Button) findViewById(R.id.downLoad);
-        img= (SimpleDraweeView) findViewById(R.id.image_view);
+        img = (SimpleDraweeView) findViewById(R.id.image_view);
         Uri uri = Uri.parse("http://img4.duitang.com/uploads/item/201510/07/20151007124603_4Tj2K.jpeg");
         img.setImageURI(uri);
-        postGetMessage.setOnClickListener(new View.OnClickListener() {
+        postGetMessage.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        MemberLogin member = new MemberLogin();
+                        member.setTelphone("12345678900");
+                        member.setPassword("123");
+                        member.setImei(getDeviceId(MainActivity.this));
+                        String message = new Gson().toJson(member);
+                        HttpGetMessage httpGetMessage = new HttpGetMessage();
+                        String aesMsg = null;
+                        try {
+                            aesMsg = AES.Encrypt(message, "weibao201410wlwp");
+                            Log.e("aseMsg", aesMsg);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        Params params = new Params();
+                        params.put("param", aesMsg);
+//                      params.put("file",new File(""));
+                        httpGetMessage.postMessage("http://www.weibaobeijing.com/Accounting/monitored/asyn/authenticate.jspx", params, new PostCallBack() {
+                            @Override
+                            public void onStart(String url, Params params) {
+                                Log.e("wp", "网络请求开始");
+                            }
+
+                            @Override
+                            public void onComplete(String request) {
+                                Log.e("wp", "网络请求完成" + request);
+                            }
+
+                            @Override
+                            public void onFailed(String error) {
+                                Log.e("wp", "网络请求失败" + error);
+                            }
+                        });
+                    }
+                }
+
+        );
+        downLoad.setOnClickListener(new View.OnClickListener()
+
+        {
             @Override
             public void onClick(View v) {
-                MemberLogin member = new MemberLogin();
-                member.setTelphone("12345678900");
-                member.setPassword("123");
-                member.setImei(getDeviceId(MainActivity.this));
-                String message = new Gson().toJson(member);
-                HttpGetMessage httpGetMessage = new HttpGetMessage();
-                String aesMsg = null;
-                try {
-                    aesMsg = AES.Encrypt(message, "weibao201410wlwp");
-                    Log.e("aseMsg",aesMsg);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                Params params = new Params();
-                params.put("param", aesMsg);
-//              params.put("file",new File(""));
-                httpGetMessage.postMessage("http://www.weibaobeijing.com/Accounting/monitored/asyn/authenticate.jspx", params, new PostCallBack() {
-                    @Override
-                    public void onStart(String url, Params params) {
-                        Log.e("wp", "网络请求开始");
-                    }
-
-                    @Override
-                        public void onComplete(String request) {
-                        Log.e("wp", "网络请求完成" + request);
-                    }
-
-                    @Override
-                    public void onFailed(String error) {
-                        Log.e("wp", "网络请求失败" + error);
-                    }
-                });
-                }
-            }
-
-            );
-            downLoad.setOnClickListener(new View.OnClickListener()
-
-            {
-                @Override
-                public void onClick (View v){
                 HttpGetMessage httpGetMessage = new HttpGetMessage();
                 httpGetMessage.downFile("http://www.weibaobeijing.com/Accounting/downloadApk2.jspx", null, new DownCallBack(Environment.getExternalStorageDirectory().getPath(), "abc.apk") {
                     @Override
@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     public void showPromptDialog(View view) {
         showPromptDlg();
     }
@@ -149,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.setTitle(getString(R.string.operation));
         dialog.setAnimationEnable(true);
         dialog.setContentImage(getResources().getDrawable(R.mipmap.sample_img));
-        Log.e("wp","在调用show之前");
+        Log.e("wp", "在调用show之前");
         dialog.setPositiveListener(getString(R.string.delete), new ColorDialog.OnPositiveListener() {
             @Override
             public void onClick(ColorDialog dialog) {
@@ -183,9 +184,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, dialog.getNegativeText().toString(), Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
-                });
+        });
         dialog.show();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
